@@ -7,7 +7,7 @@
     <!-- Main content -->
     <section class="content">
         <!-- Default box -->
-        <div class="card card-outline card-info">
+        <div class="card card-outline card-light">
             <div class="card-header">
                 <h3 class="card-title">@yield('content-title')</h3>
 
