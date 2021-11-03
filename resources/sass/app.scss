@@ -1,0 +1,12 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+/**
+ * We'll load the Admin-LTE style sheet here
+ * It'll also load bootstrap.css (v-4.6)
+ */
+@import '~admin-lte/build/scss/adminlte';
+
