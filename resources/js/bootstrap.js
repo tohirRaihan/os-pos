@@ -12,7 +12,7 @@ try {
 } catch (e) {}
 
 /**
- * Load Font Awesome style sheet here
+ * Load Font Awesome here
  */
 require('@fortawesome/fontawesome-free/js/all');
 

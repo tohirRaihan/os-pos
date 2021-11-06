@@ -4,8 +4,11 @@
     <a href="{{ url('/') }}" class="brand-link bg-lightblue">
         <img src="{{ asset('assets/images/logo.png') }}" alt="AdminLTE Logo" class="brand-image"
             style="opacity: .8">
-        <span class="brand-text font-weight-light">
+        {{-- <span class="brand-text font-weight-light">
             {{ config('app.name', 'Laravel') }}
+        </span> --}}
+        <span class="brand-text" style="font-weight: 200">
+            OS<span style="font-weight: 900">POS</span>
         </span>
     </a>
 
