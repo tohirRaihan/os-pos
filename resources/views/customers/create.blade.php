@@ -6,8 +6,10 @@
 
 @section('content')
 
-
-
+    <button type="button" class="btn btn-sm btn-dark btn-flat mb-3">
+        <i class="fas fa-chevron-left"></i>
+        Back
+    </button>
 
     <!-- form start -->
     <form>
