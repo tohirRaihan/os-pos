@@ -84,7 +84,7 @@
                         <i class="far fa-address-card"></i>
                     </div>
                 </div>
-                {!! Form::text('address1', null, ['id' => 'address_1', 'class' => 'form-control', 'placeholder' => 'Enter address here']) !!}
+                {!! Form::text('address_1', null, ['id' => 'address_1', 'class' => 'form-control', 'placeholder' => 'Enter address here']) !!}
             </div>
         </div>
     </div>
@@ -98,7 +98,7 @@
                         <i class="far fa-address-card"></i>
                     </div>
                 </div>
-                {!! Form::text('address2', null, ['id' => 'address_2', 'class' => 'form-control', 'placeholder' => 'Enter address here']) !!}
+                {!! Form::text('address_2', null, ['id' => 'address_2', 'class' => 'form-control', 'placeholder' => 'Enter address here']) !!}
             </div>
         </div>
     </div>
@@ -142,7 +142,7 @@
         <div class="form-group">
             <label for="discount">Discount</label>
             <div class="input-group">
-                {!! Form::text('discount', null, ['id' => 'discount', 'class' => 'form-control', 'placeholder' => 'Discount']) !!}
+                {!! Form::text('discount_percent', null, ['id' => 'discount', 'class' => 'form-control', 'placeholder' => 'Discount']) !!}
                 <div class="input-group-prepend">
                     <div class="input-group-text">
                         <i class="fas fa-percent"></i>
