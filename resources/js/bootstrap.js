@@ -12,6 +12,13 @@ try {
 } catch (e) {}
 
 /**
+ * Load Data table and
+ * Load Data bootstrap for additional style
+ */
+require('admin-lte/plugins/datatables/jquery.dataTables');
+require('admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4');
+
+/**
  * Load Font Awesome here
  */
 require('@fortawesome/fontawesome-free/js/all');

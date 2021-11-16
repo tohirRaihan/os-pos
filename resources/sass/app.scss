@@ -5,6 +5,11 @@
 @import 'variables';
 
 /**
+ * We'll load the style sheet for datatable plugin
+ */
+@import '~admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.css';
+
+/**
  * We'll load the Admin-LTE style sheet here
  * It'll also load bootstrap.css (v-4.6)
  */
