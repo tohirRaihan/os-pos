@@ -16,7 +16,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers = User::with('profile')->where('role', 3)->get();
+        return view('customers.index', compact('customers'));
     }
 
     /**
@@ -37,9 +38,24 @@ class CustomerController extends Controller
      */
     public function store(CustomerRequest $request)
     {
+        // Create a user data in user table as customer
         $user = User::create($request->all());
-        $user->profile()->create($request->all());
-        Customer::create($request->all() + ['user_id' => $user->id]);
+
+        /*
+        |------------------------------------------------------------------
+        | Upload profile image inside upload folder
+        | Set image name to save it in database for later usage
+        |------------------------------------------------------------------
+        */
+        $image_name = NULL;
+        if ($image = $request->image) {
+            $image_name = $user->id . "_" . time() . "_" . rand(100, 500) . "." . $image->getClientOriginalExtension();
+            $image->move(public_path('upload/images/profile_images/'), $image_name);
+        }
+
+        // Save data in profiles and customers table
+        $user->profile()->create(array_merge($request->all(), ['image' => $image_name]));
+        Customer::create($request->merge(['user_id' => $user->id])->all());
     }
 
     /**
@@ -61,7 +77,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        return view('customers.edit');
     }
 
     /**
