@@ -16,6 +16,8 @@
 
 <!-- Application script -->
 <script src="{{ asset('assets/js/app.js') }}"></script>
+{{-- Custom script --}}
+@yield('script')
 </body>
 
 </html>

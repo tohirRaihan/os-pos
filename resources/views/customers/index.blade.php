@@ -5,7 +5,13 @@
 @endsection
 
 @section('content')
-    <table id="items-table" class="table table-bordered table-striped">
+    <div class="d-flex justify-content-end">
+        <a id="new-item" href="{{ url('customers/create') }}" class="btn btn-sm bg-success mb-3">
+            Add New <i class="fa fa-plus-circle ml-2"></i>
+        </a>
+    </div>
+
+    <table id="customers-table" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>#</th>
@@ -36,4 +42,18 @@
             @endforeach
         </tbody>
     </table>
+@endsection
+
+@section('script')
+    <script>
+        $('#customers-table').DataTable({
+            responsive: true,
+            autoWidth: false,
+            language: {
+                searchPlaceholder: 'Search...',
+                sSearch: '',
+                lengthMenu: '_MENU_ Data/page'
+            }
+        });
+    </script>
 @endsection

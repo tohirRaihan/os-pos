@@ -19,6 +19,11 @@ require('admin-lte/plugins/datatables/jquery.dataTables');
 require('admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4');
 
 /**
+ * Custom file input for form field
+ */
+ window.bsCustomFileInput = require('admin-lte/plugins/bs-custom-file-input/bs-custom-file-input');
+
+/**
  * Load Font Awesome here
  */
 require('@fortawesome/fontawesome-free/js/all');
