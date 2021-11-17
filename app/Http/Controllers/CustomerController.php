@@ -77,7 +77,35 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        return view('customers.edit');
+        // $customers = User::with('profile')->where('role', 3)->get();
+        // dd($customer);
+        // dd($customer->user_id);
+
+        // $user = User::with('profile')->where('id', $customer->user_id)->first();
+        $user = User::with('profile')->find($customer->id);
+        // dd($user->toArray());
+
+        // $customer = User::find($customer->user_id)->profile()->get();
+        // $customer = $customer->merge($user);
+        // Users::find($CurrentUSerID)->userAdmin()->get();
+        // dd($user);
+
+
+        // dd($customer);
+
+        $profile = $user->profile;
+        $customer = $user->toArray() + $profile->toArray();
+        // $newCustomer[0] = $user;
+        // $newCustomer[1] = $profile;
+        // dd($newCustomer);
+
+        // // dd($profile);
+        // $customer = array_merge($customer->toArray(), $user->toArray(), $profile->toArray());
+        // dd($customer);
+        return view('customers.edit', compact('user', 'profile', 'customer'));
+
+
+
     }
 
     /**

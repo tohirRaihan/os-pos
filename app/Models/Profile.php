@@ -29,7 +29,7 @@ class Profile extends Model
 
     /*
     |----------------------------------------------------------------------
-    | One to one relation
+    | One to one relation with User Model
     |----------------------------------------------------------------------
     */
     public function user()

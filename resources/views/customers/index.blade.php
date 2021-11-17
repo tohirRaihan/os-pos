@@ -30,9 +30,14 @@
                     <td>{{ $customer->profile->phone ?? '' }}</td>
                     <td class="text-center">
                         <div class="btn-group" role="group">
-                            <button class="btn btn-xs bg-gradient-warning">
+                            {{-- <button class="btn btn-xs bg-gradient-warning">
                                 Edit
-                            </button>
+                            </button> --}}
+                            <a href="{{ Route('customers.edit', ['customer' => $customer->id]) }}" class="btn btn-xs bg-gradient-warning">
+                                Edit
+                            </a>
+
+
                             <button class="btn btn-xs bg-gradient-danger">
                                 Delete
                             </button>

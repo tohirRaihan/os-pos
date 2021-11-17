@@ -45,11 +45,21 @@ class User extends Authenticatable
 
     /*
     |----------------------------------------------------------------------
-    | One to one relation
+    | One to one relation with Profile Model
     |----------------------------------------------------------------------
     */
     public function profile()
     {
         return $this->hasOne(Profile::class);
+    }
+
+    /*
+    |----------------------------------------------------------------------
+    | One to one relation with Customer Model
+    |----------------------------------------------------------------------
+    */
+    public function customer()
+    {
+        return $this->hasOne(Customer::class);
     }
 }
