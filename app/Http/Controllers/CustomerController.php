@@ -56,6 +56,8 @@ class CustomerController extends Controller
         // Save data in profiles and customers table
         $user->profile()->create(array_merge($request->all(), ['image' => $image_name]));
         $user->customer()->create($request->all());
+
+        return redirect('customers')-with('success', 'Customer created successfully!');
     }
 
     /**
@@ -101,7 +103,8 @@ class CustomerController extends Controller
     public function update(CustomerRequest $request, User $customer)
     {
         // Create a user data in user table as customer
-        $user = User::find($customer->id)->update($request->all());
+        $user = User::with('profile')->find($customer->id);
+        $user->update($request->all());
 
         /*
         |------------------------------------------------------------------
@@ -116,8 +119,11 @@ class CustomerController extends Controller
         }
 
         // Save data in profiles and customers table
-        $user->profile()->update(array_merge($request->all(), ['image' => $image_name]));
-        $user->customer()->update($request->all());
+        $user->profile()->update($request->only('user_id', 'gender', 'phone', 'address_1', 'address_2', 'city', 'state', 'zip', 'country', 'image'));
+
+        $user->customer()->update($request->only('user_id', 'discount_percent', 'taxable', 'points', 'note'));
+
+        return redirect('/customers')->with('success', 'Customer info updated successfully!');
     }
 
     /**
@@ -126,8 +132,10 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy(User $customer)
     {
-        //
+        echo 'destroy called';
+        $customer->delete();
+        return redirect('customers')-with('success', 'Customer deleted successfully!');
     }
 }

@@ -11,6 +11,16 @@
         </a>
     </div>
 
+    {{-- success message --}}
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ $message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
     <table id="customers-table" class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -33,14 +43,22 @@
                             {{-- <button class="btn btn-xs bg-gradient-warning">
                                 Edit
                             </button> --}}
-                            <a href="{{ Route('customers.edit', ['customer' => $customer->id]) }}" class="btn btn-xs bg-gradient-warning">
+                            <a href="{{ Route('customers.edit', ['customer' => $customer->id]) }}"
+                                class="btn btn-xs bg-gradient-warning">
                                 Edit
                             </a>
 
 
-                            <button class="btn btn-xs bg-gradient-danger">
-                                Delete
-                            </button>
+
+                            <form action="{{ route('customers.destroy', $customer->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-xs bg-gradient-danger">
+                                    Delete
+                                </button>
+                            </form>
+
+
                         </div>
                     </td>
                 </tr>
