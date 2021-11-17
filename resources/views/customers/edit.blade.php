@@ -23,8 +23,7 @@
     </button>
 
     <!-- form start -->
-    {{-- {!! Form::open(['route' => 'customers.update', 'method' => 'put', 'files' => true]) !!} --}}
-    {!! Form::model($customer, ['method' => 'PATCH', 'route' => ['customers.update', 3]]) !!}
+    {!! Form::model($customer, ['method' => 'PUT', 'route' => ['customers.update', $customer['id']]]) !!}
     @include('customers.form')
 
     <button type="submit" class="btn btn-flat btn-success d-block ml-auto px-5">Update</button>

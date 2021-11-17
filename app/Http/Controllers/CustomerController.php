@@ -55,7 +55,7 @@ class CustomerController extends Controller
 
         // Save data in profiles and customers table
         $user->profile()->create(array_merge($request->all(), ['image' => $image_name]));
-        Customer::create($request->merge(['user_id' => $user->id])->all());
+        $user->customer()->create($request->all());
     }
 
     /**
@@ -72,52 +72,52 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Customer  $customer
+     * @param  \App\Models\User  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit(User $customer)
     {
-        // $customers = User::with('profile')->where('role', 3)->get();
-        // dd($customer);
-        // dd($customer->user_id);
-
-        // $user = User::with('profile')->where('id', $customer->user_id)->first();
-        $user = User::with('profile')->find($customer->id);
-        // dd($user->toArray());
-
-        // $customer = User::find($customer->user_id)->profile()->get();
-        // $customer = $customer->merge($user);
-        // Users::find($CurrentUSerID)->userAdmin()->get();
-        // dd($user);
-
-
-        // dd($customer);
-
+        // Getting values from User, Profile and Customer Model
+        $user = User::find($customer->id);
         $profile = $user->profile;
-        $customer = $user->toArray() + $profile->toArray();
-        // $newCustomer[0] = $user;
-        // $newCustomer[1] = $profile;
-        // dd($newCustomer);
+        $customer_table = $user->customer;
 
-        // // dd($profile);
-        // $customer = array_merge($customer->toArray(), $user->toArray(), $profile->toArray());
-        // dd($customer);
-        return view('customers.edit', compact('user', 'profile', 'customer'));
+        // Convert the values to array and merge them together
+        $user_array = $user ? $user->toArray() : [];
+        $profile_array = $profile ? $profile->toArray() : [];
+        $customer_table_array = $customer_table ? $customer_table->toArray() : [];
+        $customer = $user_array + $profile_array + $customer_table_array;
 
-
-
+        return view('customers.edit', compact('customer'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Customer  $customer
+     * @param  \Illuminate\Http\CustomerRequest  $request
+     * @param  \App\Models\User  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(CustomerRequest $request, User $customer)
     {
-        //
+        // Create a user data in user table as customer
+        $user = User::find($customer->id)->update($request->all());
+
+        /*
+        |------------------------------------------------------------------
+        | Upload profile image inside upload folder
+        | Set image name to save it in database for later usage
+        |------------------------------------------------------------------
+        */
+        $image_name = $request->image ?? NULL;
+        if ($image = $request->image) {
+            $image_name = $user->id . "_" . time() . "_" . rand(100, 500) . "." . $image->getClientOriginalExtension();
+            $image->move(public_path('upload/images/profile_images/'), $image_name);
+        }
+
+        // Save data in profiles and customers table
+        $user->profile()->update(array_merge($request->all(), ['image' => $image_name]));
+        $user->customer()->update($request->all());
     }
 
     /**
