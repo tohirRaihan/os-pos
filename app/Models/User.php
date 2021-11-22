@@ -62,4 +62,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(Customer::class);
     }
+
+    /*
+    |----------------------------------------------------------------------
+    | One to one relation with Employee Model
+    |----------------------------------------------------------------------
+    */
+    public function employee()
+    {
+        return $this->hasOne(Employee::class);
+    }
 }
