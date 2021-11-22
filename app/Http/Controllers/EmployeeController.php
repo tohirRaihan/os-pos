@@ -77,9 +77,20 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function edit(User $employee)
     {
-        //
+        // Getting values from User, Profile and Customer Model
+        $user = User::find($employee->id);
+        $profile = $user->profile;
+        $employee_table = $user->employee;
+
+        // Convert the values to array and merge them together
+        $user_array = $user ? $user->toArray() : [];
+        $profile_array = $profile ? $profile->toArray() : [];
+        $employee_table_array = $employee_table ? $employee_table->toArray() : [];
+        $employee = $user_array + $profile_array + $employee_table_array;
+
+        return view('employees.edit', compact('employee'));
     }
 
     /**
