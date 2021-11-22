@@ -23,7 +23,7 @@
     </a>
 
     <!-- form start -->
-    {!! Form::model($employee, ['method' => 'PUT', 'route' => ['employees.update', $employee['id']]]) !!}
+    {!! Form::model($employee, ['method' => 'PATCH', 'route' => ['employees.update', $employee['id']]]) !!}
     @include('employees.form')
 
     <button type="submit" class="btn btn-flat btn-success d-block ml-auto px-5">Update</button>

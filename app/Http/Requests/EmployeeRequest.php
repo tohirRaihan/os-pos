@@ -24,11 +24,13 @@ class EmployeeRequest extends FormRequest
      */
     public function rules()
     {
+        $user_id = $this->employee ? $this->employee->id : '';
         return [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email,'.$user_id.',id',
             'password' => 'required',
-            'employee_id' => 'unique:employees'
+            'phone' => 'required|unique:profiles,phone,' . $user_id . ',user_id',
+            'employee_id' => 'required|unique:employees,employee_id,' . $user_id . ',user_id'
         ];
     }
 }

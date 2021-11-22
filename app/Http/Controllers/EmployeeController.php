@@ -100,9 +100,30 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(EmployeeRequest $request, User $employee)
     {
-        //
+        // Create a user data in user table as employee
+        $user = User::find($employee->id);
+        $user->update($request->all());
+
+        /*
+        |------------------------------------------------------------------
+        | Upload profile image inside upload folder
+        | Set image name to save it in database for later usage
+        |------------------------------------------------------------------
+        */
+        $image_name = $request->image ?? NULL;
+        if ($image = $request->image) {
+            $image_name = $user->id . "_" . time() . "_" . rand(100, 500) . "." . $image->getClientOriginalExtension();
+            $image->move(public_path('upload/images/profile_images/'), $image_name);
+        }
+
+        // Save data in profiles and employees table
+        $user->profile()->update($request->only('user_id', 'gender', 'phone', 'address_1', 'address_2', 'city', 'state', 'zip', 'country', 'image'));
+
+        $user->employee()->update($request->only('user_id', 'employee_id'));
+
+        return redirect('employees')->with('success', 'Employee info updated successfully!');
     }
 
     /**
