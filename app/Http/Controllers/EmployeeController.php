@@ -15,7 +15,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = User::with('profile')->where('role', 2)->get();
+        $employees = User::with('profile', 'employee')->where('role', 2)->get();
         return view('employees.index', compact('employees'));
     }
 
@@ -26,7 +26,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('employees.create');
     }
 
     /**

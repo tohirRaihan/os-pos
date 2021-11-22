@@ -18,7 +18,7 @@ class CreateEmployeesTable extends Migration
             // foraign key
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('employee_id');
+            $table->string('employee_id')->unique();
             $table->timestamps();
         });
     }

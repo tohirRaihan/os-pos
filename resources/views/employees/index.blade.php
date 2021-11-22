@@ -28,6 +28,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone No.</th>
+                <th>Employee ID</th>
                 <th class="text-center">Action</th>
             </tr>
         </thead>
@@ -38,6 +39,7 @@
                     <td>{{ $employee->name }}</td>
                     <td>{{ $employee->email }}</td>
                     <td>{{ $employee->profile->phone ?? '' }}</td>
+                    <td>{{ $employee->employee->employee_id ?? '' }}</td>
                     <td class="text-center">
                         <div class="d-flex justify-content-center font-weight-bold">
                             <a href="{{ Route('employees.edit', ['employee' => $employee->id]) }}"
@@ -61,7 +63,7 @@
 
 @section('script')
     <script>
-        $('#customers-table').DataTable({
+        $('#employees-table').DataTable({
             responsive: true,
             autoWidth: false,
             language: {
