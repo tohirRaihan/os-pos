@@ -39,7 +39,7 @@
                     <td>{{ $customer->email }}</td>
                     <td>{{ $customer->profile->phone ?? '' }}</td>
                     <td class="text-center">
-                        <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-center font-weight-bold">
                             <a href="{{ Route('customers.edit', ['customer' => $customer->id]) }}"
                                 class="btn btn-xs bg-gradient-primary mr-2">
                                 <i class="far fa-edit"></i>
