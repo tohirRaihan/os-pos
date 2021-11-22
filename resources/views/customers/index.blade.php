@@ -6,8 +6,8 @@
 
 @section('content')
     <div class="d-flex justify-content-end">
-        <a id="new-item" href="{{ url('customers/create') }}" class="btn btn-sm bg-success mb-3">
-            Add New <i class="fa fa-plus-circle ml-2"></i>
+        <a id="new-item" href="{{ url('customers/create') }}" class="btn btn-flat bg-gradient-success mb-3">
+            <i class="fas fa-user-plus mr-2"></i>New Customer
         </a>
     </div>
 
@@ -21,7 +21,7 @@
         </div>
     @endif
 
-    <table id="customers-table" class="table table-bordered table-striped">
+    <table id="customers-table" class="table table-bordered table-striped table-sm">
         <thead>
             <tr>
                 <th>#</th>
@@ -39,26 +39,18 @@
                     <td>{{ $customer->email }}</td>
                     <td>{{ $customer->profile->phone ?? '' }}</td>
                     <td class="text-center">
-                        <div class="btn-group" role="group">
-                            {{-- <button class="btn btn-xs bg-gradient-warning">
-                                Edit
-                            </button> --}}
+                        <div class="d-flex justify-content-center">
                             <a href="{{ Route('customers.edit', ['customer' => $customer->id]) }}"
-                                class="btn btn-xs bg-gradient-warning">
-                                Edit
+                                class="btn btn-xs bg-gradient-primary mr-2">
+                                <i class="far fa-edit"></i>
                             </a>
 
+                            {!! Form::open(['method' => 'DELETE', 'route' => ['customers.destroy', $customer->id], 'onsubmit' => "return confirm('Do you really want to Delete?')"]) !!}
 
-
-                            <form action="{{ route('customers.destroy', $customer->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-xs bg-gradient-danger">
-                                    Delete
-                                </button>
-                            </form>
-
-
+                            <button type="submit" class="btn btn-xs bg-gradient-danger">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                            {!! Form::close() !!}
                         </div>
                     </td>
                 </tr>

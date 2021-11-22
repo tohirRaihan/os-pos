@@ -57,7 +57,7 @@ class CustomerController extends Controller
         $user->profile()->create(array_merge($request->all(), ['image' => $image_name]));
         $user->customer()->create($request->all());
 
-        return redirect('customers')-with('success', 'Customer created successfully!');
+        return redirect('customers')->with('success', 'Customer created successfully!');
     }
 
     /**
@@ -136,6 +136,6 @@ class CustomerController extends Controller
     {
         echo 'destroy called';
         $customer->delete();
-        return redirect('customers')-with('success', 'Customer deleted successfully!');
+        return redirect('customers')->with('success', 'Customer deleted successfully!');
     }
 }
