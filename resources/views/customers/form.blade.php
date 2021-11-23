@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-6">
         <div class="form-group">
-            <label for="name">Customer Name</label>
+            <label for="name">Customer Name <span class="text-danger">*</span></label>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
@@ -15,7 +15,7 @@
 
     <div class="col-md-6">
         <div class="form-group">
-            <label for="email">Email Address</label>
+            <label for="email">Email Address <span class="text-danger">*</span></label>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text">
@@ -29,7 +29,7 @@
 
     <div class="col-md-6">
         <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password">Password <span class="text-danger">*</span></label>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text">
@@ -63,7 +63,7 @@
 
     <div class="col-md-6">
         <div class="form-group">
-            <label for="phone">Phone Number</label>
+            <label for="phone">Phone Number <span class="text-danger">*</span></label>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">

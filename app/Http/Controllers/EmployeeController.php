@@ -6,6 +6,7 @@ use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
@@ -39,7 +40,10 @@ class EmployeeController extends Controller
     public function store(EmployeeRequest $request)
     {
         // Create a user data in user table as employee
-        $user = User::create($request->all() + ['role' => 2]);
+        $user = User::create(array_merge($request->all(), [
+            'password' => Hash::make($request->password),
+            'role' => 2
+        ]));
 
         /*
         |------------------------------------------------------------------
@@ -104,7 +108,9 @@ class EmployeeController extends Controller
     {
         // Create a user data in user table as employee
         $user = User::find($employee->id);
-        $user->update($request->all());
+        $user->update(array_merge($request->all(), [
+            'password' => Hash::make($request->password)
+        ]));
 
         /*
         |------------------------------------------------------------------

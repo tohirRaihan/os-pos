@@ -6,6 +6,7 @@ use App\Http\Requests\CustomerRequest;
 use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
@@ -39,7 +40,7 @@ class CustomerController extends Controller
     public function store(CustomerRequest $request)
     {
         // Create a user data in user table as customer
-        $user = User::create($request->all());
+        $user = User::create(array_merge($request->all(), ['password' => Hash::make($request->password)]));
 
         /*
         |------------------------------------------------------------------
@@ -103,8 +104,8 @@ class CustomerController extends Controller
     public function update(CustomerRequest $request, User $customer)
     {
         // Create a user data in user table as customer
-        $user = User::with('profile')->find($customer->id);
-        $user->update($request->all());
+        $user = User::find($customer->id);
+        $user->update(array_merge($request->all(), ['password' => Hash::make($request->password)]));
 
         /*
         |------------------------------------------------------------------
