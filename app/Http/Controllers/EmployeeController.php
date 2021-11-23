@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
@@ -100,8 +99,8 @@ class EmployeeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Employee  $employee
+     * @param  \App\Http\Requests\EmployeeRequest  $request
+     * @param  \App\Models\User  $employee
      * @return \Illuminate\Http\Response
      */
     public function update(EmployeeRequest $request, User $employee)
@@ -135,11 +134,12 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Employee  $employee
+     * @param  \App\Models\User  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy(User $employee)
     {
-        //
+        $employee->delete();
+        return redirect('employees')->with('success', 'employee deleted successfully!');
     }
 }

@@ -45,6 +45,16 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('employees.index') }}"
+                        class="nav-link {{ request()->is('supliers*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-people-carry"></i>
+                        <p>
+                            Suppliers
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-header">LABELS</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">

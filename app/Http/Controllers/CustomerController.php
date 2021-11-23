@@ -135,7 +135,6 @@ class CustomerController extends Controller
      */
     public function destroy(User $customer)
     {
-        echo 'destroy called';
         $customer->delete();
         return redirect('customers')->with('success', 'Customer deleted successfully!');
     }
