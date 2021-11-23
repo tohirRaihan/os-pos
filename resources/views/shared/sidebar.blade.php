@@ -46,8 +46,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('employees.index') }}"
-                        class="nav-link {{ request()->is('supliers*') ? 'active' : '' }}">
+                    <a href="{{ route('suppliers.index') }}"
+                        class="nav-link {{ request()->is('suppliers*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-people-carry"></i>
                         <p>
                             Suppliers
