@@ -28,7 +28,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('customers.index') }}" class="nav-link">
+                    <a href="{{ route('customers.index') }}"
+                        class="nav-link {{ request()->is('customers*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Customers
@@ -36,7 +37,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('employees.index') }}" class="nav-link">
+                    <a href="{{ route('employees.index') }}"
+                        class="nav-link {{ request()->is('employees*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user-tie"></i>
                         <p>
                             Employees

@@ -19,8 +19,8 @@ class CreateCustomersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->decimal('discount_percent', 15, 2)->default(0.00);
-            $table->tinyInteger('taxable')->default(0);
+            $table->decimal('discount_percent', 15, 2)->default(0.00)->nullable();
+            $table->tinyInteger('taxable')->default(0)->nullable();
             $table->integer('points')->nullable();
             $table->string('note')->nullable();
             $table->timestamps();

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Customer;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -24,10 +24,12 @@ class CustomerRequest extends FormRequest
      */
     public function rules()
     {
+        $user_id = $this->customer ? $this->customer->id : '';
         return [
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+            'email' => 'required|email|unique:users,email,' . $user_id . ',id',
+            'password' => 'required',
+            'phone' => 'required|unique:profiles,phone,' . $user_id . ',user_id',
         ];
     }
 }
