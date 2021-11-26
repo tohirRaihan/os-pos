@@ -26,8 +26,7 @@
                 <form action="{{ route('login') }}" method="POST">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email" id="email" @error('email')
-                            is-invalid @enderror" name="email" value="{{ old('email') }}"
+                        <input type="email" class="form-control" placeholder="Email" id="email" name="email" value="{{ old('email') }}"
                             autocomplete="email" autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -43,8 +42,7 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password" id="password"
-                            @error('password') is-invalid @enderror" name="password" required
+                        <input type="password" class="form-control" placeholder="Password" id="password" name="password" required
                             autocomplete="current-password">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -85,7 +83,7 @@
                         </p>
                     @endif
                     <p class="mb-0">
-                        <a href="register.html" class="text-center">Register a new membership</a>
+                        <a href="{{ url('register') }}" class="text-center">Register a new membership</a>
                     </p>
                 </div>
             </div>
