@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SupplierRequest;
 use App\Models\Supplier;
-use Illuminate\Http\Request;
 
 class SupplierController extends Controller
 {
@@ -60,19 +59,20 @@ class SupplierController extends Controller
      */
     public function edit(Supplier $supplier)
     {
-        //
+        return view('suppliers.edit', compact('supplier'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\CustomerRequest;  $request
      * @param  \App\Models\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Supplier $supplier)
+    public function update(SupplierRequest $request, Supplier $supplier)
     {
-        //
+        $supplier->update($request->all());
+        return redirect('suppliers')->with('success', 'Supplier info updated successfully!');
     }
 
     /**
