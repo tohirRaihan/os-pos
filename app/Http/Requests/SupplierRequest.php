@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SupplierRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class SupplierRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -23,8 +24,13 @@ class SupplierRequest extends FormRequest
      */
     public function rules()
     {
+        $supplier_id = $this->supplier ? $this->supplier->id : '';
         return [
-            //
+            'name' => 'required',
+            'company_name' => 'required',
+            'account_number' => 'required',
+            'email' => 'required|email|unique:suppliers,email,'.$supplier_id.',id',
+            'phone' => 'required|unique:suppliers,phone,' . $supplier_id . ',id'
         ];
     }
 }
