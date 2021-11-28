@@ -24,7 +24,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = [1 => 'test'];
+        return view('categories.create', compact('categories'));
     }
 
     /**

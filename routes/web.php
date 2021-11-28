@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\SupplierController;
@@ -32,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
         'customers' => CustomerController::class,
         'employees' => EmployeeController::class,
         'suppliers' => SupplierController::class,
+        'categories' => CategoryController::class,
     ]);
 });
 

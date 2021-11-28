@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content-title')
-    New Supplier
+    New Category
 @endsection
 
 @section('content')
@@ -15,9 +15,17 @@
     </a>
 
     <!-- form start -->
-    {!! Form::open(['route' => 'suppliers.store']) !!}
-    @include('suppliers.form')
+    {!! Form::open(['route' => 'categories.store']) !!}
+    @include('categories.form')
 
     <button type="submit" class="btn btn-flat btn-success d-block ml-auto px-5">Submit</button>
     {!! Form::close() !!}
+@endsection
+
+@section('script')
+    <script>
+        $(function() {
+            bsCustomFileInput.init();
+        });
+    </script>
 @endsection
