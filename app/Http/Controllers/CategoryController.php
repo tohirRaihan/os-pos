@@ -24,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = [1 => 'test'];
+        $categories = Category::where('parent_id', NULL)->orderby('name', 'asc')->get()->pluck('name', 'id');
         return view('categories.create', compact('categories'));
     }
 
@@ -36,7 +36,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Category::create($request->all());
     }
 
     /**
