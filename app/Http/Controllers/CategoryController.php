@@ -61,19 +61,21 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $categories = Category::where('parent_id', NULL)->orderby('name', 'asc')->get()->pluck('name', 'id');
+        return view('categories.edit', compact('category', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\CategoryRequest  $request
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
-        //
+        $category->update($request->all());
+        return redirect('categories')->with('success', 'Category updated successfully!');
     }
 
     /**
@@ -84,6 +86,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect('categories')->with('success', 'Category deleted successfully!');
     }
 }
