@@ -37,7 +37,19 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*
+        |------------------------------------------------------------------
+        | Upload item image inside upload folder
+        | Set image name to save it in database for later usage
+        |------------------------------------------------------------------
+        */
+        $image_name = NULL;
+        if ($image = $request->image) {
+            $image_name = rand(100, 500) . "_" . time() . "_" . rand(100, 500) . "." . $image->getClientOriginalExtension();
+            $image->move(public_path('upload/images/item_images/'), $image_name);
+        }
+
+        Item::create(array_merge($request->all(), ['image' => $image_name]));
     }
 
     /**

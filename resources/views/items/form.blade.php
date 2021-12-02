@@ -5,10 +5,10 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <i class="fas fa-signature"></i>
+                        <i class="fas fa-tag"></i>
                     </div>
                 </div>
-                {!! Form::text('name', null, ['id' => 'name', 'class' => 'form-control', 'placeholder' => 'Enter item full name']) !!}
+                {!! Form::text('name', null, ['id' => 'name', 'class' => 'form-control', 'placeholder' => 'Enter item name']) !!}
             </div>
         </div>
     </div>

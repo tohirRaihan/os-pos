@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content-title')
-    New Customer
+    New Item
 @endsection
 
 @section('content')
