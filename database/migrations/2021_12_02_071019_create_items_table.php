@@ -27,9 +27,8 @@ class CreateItemsTable extends Migration
             $table->double('quantity');
             $table->string('unit');
             $table->string('image')->nullable();
-            $table->tinyInteger('tax1')->nullable();
-            $table->tinyInteger('tax2')->nullable();
-            $table->string('location')->comment("item location in store");
+            $table->tinyInteger('tax')->nullable();
+            $table->string('location')->comment("item location in store")->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });

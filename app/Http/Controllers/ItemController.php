@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -14,7 +15,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        return view('items.index');
     }
 
     /**
@@ -24,7 +25,8 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        $suppliers = Supplier::all()->pluck('name', 'id');
+        return view('items.create', compact('suppliers'));
     }
 
     /**

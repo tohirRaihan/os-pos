@@ -57,9 +57,18 @@
                 <li class="nav-item">
                     <a href="{{ route('categories.index') }}"
                         class="nav-link {{ request()->is('categories*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-sitemap"></i>
+                        <i class="nav-icon fas fa-layer-group"></i>
                         <p>
                             Categories
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('items.index') }}"
+                        class="nav-link {{ request()->is('items*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-tags"></i>
+                        <p>
+                            Items
                         </p>
                     </a>
                 </li>
