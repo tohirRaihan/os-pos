@@ -24,6 +24,11 @@ require('admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4');
  window.bsCustomFileInput = require('admin-lte/plugins/bs-custom-file-input/bs-custom-file-input');
 
 /**
+ * include select2 plugin
+ */
+ window.select2 = require('admin-lte/plugins/select2/js/select2');
+
+/**
  * Load Font Awesome here
  */
 require('@fortawesome/fontawesome-free/js/all');
