@@ -57,7 +57,7 @@
                 <li class="nav-item">
                     <a href="{{ route('categories.index') }}"
                         class="nav-link {{ request()->is('categories*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-people-carry"></i>
+                        <i class="nav-icon fas fa-sitemap"></i>
                         <p>
                             Categories
                         </p>

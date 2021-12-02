@@ -7,7 +7,7 @@
 @section('content')
     <div class="d-flex justify-content-end">
         <a id="new-item" href="{{ url('categories/create') }}" class="btn btn-flat bg-gradient-success mb-3">
-            <i class="fas fa-user-plus mr-2"></i>New Category
+            <i class="far fa-plus-square mr-2"></i>New Category
         </a>
     </div>
 
